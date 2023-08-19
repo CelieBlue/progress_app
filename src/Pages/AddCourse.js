@@ -1,9 +1,21 @@
-export default function AddCourse() {
+export default function AddCourse(props) {
+    const { handleAddCourse } = props;
+    const course = {
+        name: 'React',
+        category: 'front',
+        description: 'Apprendre React'
+    };
+
+function handleSubmit(event) {
+    event.preventDefault();
+    handleAddCourse(course);
+}
+
     return(
         <div className="add_course">
             <h1>Ajouter un cours</h1>
             <div>
-                <form>
+                <form onSubmit={(event) => handleSubmit(event)}>
                     <label htmlFor="course-name">Nom du cours</label>
                     <br />
                     <input type="text" name="course-name" id="course-name" />
