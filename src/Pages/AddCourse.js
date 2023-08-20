@@ -14,7 +14,7 @@ function handleSubmit(event) {
     return(
         <div className="add_course">
             <h1>Ajouter un cours</h1>
-            <div>
+            <div className="background_form">
                 <form onSubmit={(event) => handleSubmit(event)}>
                     <label htmlFor="course-name">Nom du cours</label>
                     <br />
@@ -30,7 +30,7 @@ function handleSubmit(event) {
                         <option value="Autres">Autres</option>
                     </select>
                     <br />
-                    <label htmlFor="course-description">Description</label>
+                    <label htmlFor="course-description" >Description</label>
                     <br />
                     <textarea 
                         name="course-description" 
@@ -40,7 +40,7 @@ function handleSubmit(event) {
                     </textarea>
                     <br />
                     <br />
-                    <input type="submit" value="Ajout Techno" />
+                    <input type="submit" value="Ajoutez ce cours" className="btn" />
                 </form>
             </div>
         </div>
