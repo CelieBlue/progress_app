@@ -1,14 +1,22 @@
+import { useState } from 'react';
+
 export default function AddCourse(props) {
+    const [course, setCourse] = useState({
+        courseName: '',
+        courseCategory: '',
+        courseDescription: ''
+    });
+
     const { handleAddCourse } = props;
-    const course = {
-        name: 'React',
-        category: 'front',
-        description: 'Apprendre React'
-    };
 
 function handleSubmit(event) {
     event.preventDefault();
     handleAddCourse(course);
+}
+
+function handleChange(event) {
+    const { name, value } = event.target;
+    setCourse({...course, [name]: value });
 }
 
     return(
@@ -16,13 +24,13 @@ function handleSubmit(event) {
             <h1>Ajouter un cours</h1>
             <div className="background_form">
                 <form onSubmit={(event) => handleSubmit(event)}>
-                    <label htmlFor="course-name">Nom du cours</label>
+                    <label htmlFor="courseName">Nom du cours</label>
                     <br />
-                    <input type="text" name="course-name" id="course-name" />
+                    <input type="text" name="courseName" id="courseName" value={ course.courseName } onChange={(event) => handleChange(event)} />
                     <br />
-                    <label htmlFor="course-category">Catégorie</label>
+                    <label htmlFor="courseCategory">Catégorie</label>
                     <br />
-                    <select name="course_category" id="course-category">
+                    <select name="courseCategory" id="courseCategory" value={ course.courseCategory } onChange={(event) => handleChange(event)}>
                         <option value="">Choisir une catégorie</option>
                         <option value="front">Front</option>
                         <option value="Back">Back</option>
@@ -30,13 +38,14 @@ function handleSubmit(event) {
                         <option value="Autres">Autres</option>
                     </select>
                     <br />
-                    <label htmlFor="course-description" >Description</label>
+                    <label htmlFor="courseDescription" >Description</label>
                     <br />
                     <textarea 
-                        name="course-description" 
-                        id="course-description"
+                        name="courseDescription" 
+                        id="courseDescription"
                         cols="30" 
-                        rows="10">
+                        rows="10"
+                        value={ course.courseDescription } onChange={(event) => handleChange(event)}>
                     </textarea>
                     <br />
                     <br />
